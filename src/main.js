@@ -41,6 +41,8 @@ const drawControl = new L.Control.Draw({
 });
 map.addControl(drawControl);
 
+// L.Browser.touch = false;
+
 map.on(L.Draw.Event.CREATED, (event) => {
   console.log('event:', event);
   const { layerType, layer } = event;
@@ -51,13 +53,17 @@ map.on(L.Draw.Event.CREATED, (event) => {
   editableLayers.addLayer(layer);
 });
 
-// map.on('draw:drawstart', () => {
-//   console.log('drawstart');
-// })
-//
-// map.on('draw:drawstop', () => {
-//   console.log('drawstop');
-// })
+map.on('draw:drawstart', () => {
+  console.log('drawstart');
+})
+
+map.on('draw:drawstop', () => {
+  console.log('drawstop');
+})
+
+map.on('mousedown', () => {
+  console.log('map mousedown');
+})
 
 map.on('click', () => {
   console.log('map click');
